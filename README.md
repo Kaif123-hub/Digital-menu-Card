@@ -1,3 +1,4 @@
+
 Digital Menu Card is a Full Stack Web Application designed to help restaurants manage their menu digitally.
 It allows users to perform CRUD operations (Create, Read, Update, Delete) on food items through a responsive and user-friendly interface.
 
