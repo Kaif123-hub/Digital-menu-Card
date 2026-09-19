@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require ('express');
-const pool = require('./db');
+const pool = require ('./db');
 const bodyParser = require ('body-parser');
 const loginRoutes = require("./login.routes");
 const { body, validationResult } = require('express-validator');
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 app.get('/menu', async (req, res) => {
     try {
-        const result = await pool.query('select * from menu');
+        const result = await pool.query('select * from menu ORDER BY mid DESC');
         res.json ({status:"200",menulist:result.rows});
     } catch (err) {
         console.error(err.message);
@@ -65,7 +65,7 @@ app.delete(
             .notEmpty()
             .withMessage('id is required')
 
-    ],
+    ],     
     async (req, res) => {
         try {
             const errors = validationResult(req);
@@ -95,7 +95,7 @@ app.post('/addmenu', [
      body('menu_price').notEmpty().withMessage('menu_price is required'),
       body('gid').notEmpty().withMessage('gid is required'),
        body('qid').notEmpty().withMessage('qid is required'),
-        body('mid').notEmpty().withMessage('mid is required')
+    
 ],async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -355,5 +355,4 @@ app.use("/auth", loginRoutes);
 
 app.listen(PORT, () => {
    console.log('Example app listening on PORT ${http://localhost:3000}' )
-})
-
+});
