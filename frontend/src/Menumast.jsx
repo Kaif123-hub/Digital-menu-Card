@@ -38,7 +38,7 @@ export default function Menumast() {
   // 🔹 ADD MENU (NO DATE SENT)
 function Menumn() {
 
-  if (!mn || !mp || !gid || !qid || !nid) {
+  if (!mn || !mp || !gid || !qid ) {
     alert("Please fill all fields");
     return;
   }
